@@ -1,0 +1,2899 @@
+//
+// See Profowl.Inf Help file on how this file format is used.
+// Edit with care. This file must reside in the same HOME directory
+// as Profowl.Exe -- Also see File: PROFOWL.USR
+//
+//
+[TappDictionary]
+.Allocate Table
+    AllocTable(int count);
+.END
+
+.FreeTable
+    FreeTable(TAppDictionaryEntry *table);
+.END
+
+.GrowTable
+    GrowTable(int increment);
+.END
+
+.Add
+    Add(unsigned pid, TApplication *app);
+.END
+
+.LookupApp
+    LookupApp(unsigned pid);
+.END
+
+.Delete
+    Delete(unsigned pid);
+.END
+
+
+
+[TApplication]
+.InitApplication
+    InitApplication();
+.END
+
+.InitInstance
+    InitInstance();
+.END
+
+.InitMainWindow
+    InitMainWindow();
+.END
+
+.TermInstance
+    TermInstance(int status);
+.END
+
+.SetMainWindow
+    SetMainWindow(TFrameWindow *window);
+.END
+
+.SetDocManager
+    SetDocManager(TDocManager *docManager);
+.END
+
+.IdleAction
+    IdleAction(long idleCount);
+.END
+
+.Run
+    Run();
+.END
+
+.WaitMessage
+    WaitMessage();
+.END
+
+.PostQuitMessage
+    PostQuitMessage(MessageLoopResult);
+.END
+
+.Find
+    Find(TEventInfo &eventInfo, TEqualOperator equal);
+.END
+
+.CanClose
+    CanClose()
+.END
+
+.PreProcessMenu
+    PreProcessMenu(HMENU fmenu);
+.END
+
+.Condemn
+    Condemn(TWindow *win)
+.END
+
+.Uncondemn
+    Uncondemn(TWindow *win)
+.END
+
+.DeleteCondemned
+    DeleteCondemned()
+.END
+
+[TBitmap]
+.TBitmap
+    TBitmap(const TClipboard &clipboard);
+.END
+
+.Init
+    Init(BITMAPINFOHEADER &Header, void *bits, TMemoryDC *dc)
+.END
+
+.GpiQueryPaletteInfo
+    GpiQueryPaletteInfo(0, *memDC, 0, 0, nColors, (ULONG*)cur);
+.END
+
+.TBitmap
+    TBitmap(int width, int height, BYTE planes, BYTE bitCount, void *bits)
+.END
+
+.Width
+    Width();
+.END
+
+.Height
+    Height();
+.END
+
+.Planes
+    Planes();
+.END
+
+.BitsPixel
+    BitsPixel();
+.END
+
+.ToClipboard
+    ToClipboard(TClipboard &clipboard)
+.END
+
+.CreateBitmap dib
+    Create(const TDib &dib, const TPalette &palette)
+.END
+
+.CreateBitMap bitmap
+    Create(const TBitmap &src)
+.END
+
+.UpdateInfo
+    UpdateInfo(TMemoryDC &mDC)
+.END
+
+
+[TBitmapGadget]
+
+.SysColorChange
+    SysColorChange()
+.END
+
+.SetBounds
+    SetBounds(TRect &boundRect)
+.END
+
+.GetDesiredSize
+    GetDesiredSize(TSize &size)
+.END
+
+.SelectImage
+    SelectImage(int imageNum, BOOL immediate)
+.END
+
+.Paint
+    Paint(TDC &dc)
+.END
+
+
+
+[TBrush]
+.TBrush
+    TBrush(HBRUSH handle, TAutoDelete autoDelete);
+.END
+
+.TBrush
+    TBrush(TColor color);
+.END
+
+.TBrush
+    TBrush(TColor color, int style);
+.END
+
+.TBrush
+    TBrush(const TBitmap &pattern);
+.END
+
+.TBrush
+    TBrush(const TDib &pattern);
+.END
+
+.TBrush
+    TBrush(const LOGBRUSH *logBrush);
+.END
+
+.TBrush
+    TBrush(const TBrush &src);
+.END
+
+.TBrush
+    TBrush(int stock);
+.END
+
+.GetObject
+    GetObject(LOGBRUSH &logBrush);
+.END
+
+.UnrealizeObject
+    UnrealizeObject();
+.END
+
+
+
+
+[TButton]
+.GetClassName
+    GetClassName();
+.END
+
+.SetupWindow
+    SetupWindow();
+.END
+
+.CntlCmdXlate
+    CntlCmdXlate(HWND hWnd, UINT &notifyCode, LPARAM ControlInfo);
+.END
+
+.BMSetStyle
+    BMSetStyle(WPARAM wParam, LPARAM);
+.END
+
+.SetState
+    SetState(UINT hilite);
+.END
+
+
+[TButtonGadget]
+.SetShadowStyle
+    SetShadowStyle(TShadowStyle shadowStyle)
+.END
+
+.CommandEnable
+    CommandEnable();
+.END
+
+.SysColorChange
+    SysColorChange();
+.END
+
+.CheckExclusively
+    CheckExclusively();
+.END
+
+.SetButtonState
+    SetButtonState(TState state)
+.END
+
+.SetBounds
+    SetBounds(TRect &bounds)
+.END
+
+.GetDesiredSize
+    GetDesiredSize(TSize &size)
+.END
+
+.GetGlyphDib
+    GetGlyphDib();
+.END
+
+.ReleaseGlyphDib
+    ReleaseGlyphDib(TDib *glyph)
+.END
+
+.BuildCelArray
+    BuildCelArray();
+.END
+
+.Paint
+    Paint(TDC &dc)
+.END
+
+.Invalidate
+    Invalidate();
+.END
+
+.BeginPressed
+    BeginPressed(TPoint&)
+.END
+
+.CancelPressed
+    CancelPressed(TPoint&)
+.END
+
+.Activate
+    Activate(TPoint &pt)
+.END
+
+.LButtonDown
+    LButtonDown(UINT modKeys, TPoint &pt)
+.END
+
+.MouseMove
+    MouseMove(UINT modKeys, TPoint &pt)
+.END
+
+.MouseEnter
+    MouseEnter(UINT modKeys, TPoint &pt)
+.END
+
+.MouseLeave
+    MouseLeave(UINT modKeys, TPoint &pt)
+.END
+
+.LButtonUp
+    LButtonUp(UINT modKeys, TPoint &pt)
+.END
+
+
+[TCellArray]
+.operator =
+    operator =(const TCelArray &src)
+.END
+
+.CelOffset
+    CelOffset(int cel)
+.END
+
+.elRect
+    elRect(int cel)
+.END
+
+
+[TCheckBox]
+.Check
+    Check()
+.END
+
+.Uncheck
+    Uncheck()
+.END
+
+.GetClassName
+    GetClassName()
+.END
+
+.Transfer
+    Transfer(void *buffer, TTransferDirection direction)
+.END
+
+.Toggle Check
+    Toggle();
+.END
+
+.GetCheck
+    GetCheck();
+.END
+
+.SetCheck
+    SetCheck(UINT check);
+.END
+
+.SetStyle
+    SetStyle(UINT style, BOOL redraw);
+.END
+
+.GetState
+    GetState();
+.END
+
+.SetState
+    SetState(UINT state);
+.END
+
+.NClicked
+    NClicked();
+.END
+
+
+[TClipboard]
+.TClipboard
+    TClipboard(HWND hWnd)
+.END
+
+.GetClipboardData
+    GetClipboardData()
+.END
+
+.SetClipboardData
+    SetClipboardData(const char *string)
+.END
+
+.OpenClipboard
+    OpenClipboard(HWND hWnd)
+.END
+
+.CloseClipboard
+    CloseClipboard()
+.END
+
+.GetClipboardData
+    GetClipboardData(UINT Format)
+.END
+
+.GetClipboardData
+    GetClipboardData()
+.END
+
+.GetClipboardOwner
+    GetClipboardOwner()
+.END
+
+.GetClipboardViewer
+    GetClipboardViewer()
+.END
+
+.GetClipboardFormatName
+    GetClipboardFormatName(UINT Format, char *FormatName, int MaxCount)
+.END
+
+.GetPriorityClipboardFormat
+    GetPriorityClipboardFormat(UINT *priorityList, int count)
+.END
+
+.CountClipboardFormats
+    CountClipboardFormats()
+.END
+
+.IsClipboardFormatAvailable
+    IsClipboardFormatAvailable(UINT format)
+.END
+
+.EmptyClipboard
+    EmptyClipboard()
+.END
+
+.RegisterClipboardFormat
+    RegisterClipboardFormat(const char *fmt)
+.END
+
+.SetClipboardData
+    SetClipboardData(UINT Format, HANDLE Handle)
+.END
+
+.SetClipboardData
+    SetClipboardData(const char *string)
+.END
+
+.SetClipboardViewer
+    SetClipboardViewer(HWND Wnd)
+.END
+
+
+[TColor]
+.GetSysColor
+    GetSysColor(int index)
+.END
+
+.SetSysColors
+    SetSysColors(unsigned nelems, const int indices[], const TColor colors[])
+.END
+
+
+[TComboBox]
+.GetTextLen
+    GetTextLen()
+.END
+
+.ShowList
+    ShowList()
+.END
+
+.HideList
+    HideList()
+.END
+
+.SetText
+    SetText(const char *str)
+.END
+
+.GetEditSel
+    GetEditSel(int &startPos, int &endPos)
+.END
+
+.ShowList
+    ShowList(BOOL show)
+.END
+
+.Clear
+    Clear()
+.END
+
+.GetText
+    GetText(char *str, int maxChars)
+.END
+
+.SetEditSel
+    SetEditSel(int startPos, int endPos)
+.END
+
+.GetDroppedControlRect
+    GetDroppedControlRect(TRect &rect)
+.END
+
+.GetDroppedState
+    GetDroppedState()
+.END
+
+.GetExtendedUI
+    GetExtendedUI()
+.END
+
+.SetExtendedUI
+    SetExtendedUI(BOOL extended)
+.END
+
+.InsertString
+    InsertString(const char *str, int index)
+.END
+
+.DeleteString
+    DeleteString(int index)
+.END
+
+.ClearList
+    ClearList()
+.END
+
+.DirectoryList
+    DirectoryList(UINT attrs, char *fileSpec)
+.END
+
+.GetCount
+    GetCount()
+.END
+
+.FindString
+    FindString(const char *find, int indexStart)
+.END
+
+.GetStringLen
+    GetStringLen(int index)
+.END
+
+.GetString
+    GetString(char *str, int index)
+.END
+
+.GetSelIndex
+    GetSelIndex()
+.END
+
+.SetSelIndex
+    SetSelIndex(int index)
+.END
+
+.SetSelString
+    SetSelString(const char *findStr, int indexStart)
+.END
+
+.GetSelIndex
+    GetSelIndex()
+.END
+
+.SetSelIndex
+    SetSelIndex(int index)
+.END
+
+.GetItemData
+    GetItemData(int index)
+.END
+
+.SetItemData
+    SetItemData(int index, DWORD itemData)
+.END
+
+.GetItemHeight
+    GetItemHeight(int index)
+.END
+
+.SetItemHeight
+    SetItemHeight(int index, int height)
+.END
+
+.Transfer
+    Transfer(void *buffer, TTransferDirection direction)
+.END
+
+.GetClassName
+    GetClassName()
+.END
+
+.SetupWindow
+    SetupWindow()
+.END
+
+
+[TControlBar]
+.PositionGadget
+    PositionGadget(TGadget *previous, TGadget *next, TPoint &origin);
+.END
+
+
+[TControlGadget]
+.SetBounds
+    SetBounds(TRect &bounds);
+.END
+
+.GetDesiredSize
+    GetDesiredSize(TSize &size);
+.END
+
+.Inserted
+    Inserted();
+.END
+
+.Removed
+    Removed();
+.END
+
+.InvalidateRect
+    InvalidateRect(const TRect &rect, BOOL erase);
+.END
+
+.Invalidate
+    Invalidate(BOOL erase);
+.END
+
+.Update
+    Update();
+.END
+
+
+
+
+[TControl]
+.CompareItem
+    CompareItem(COMPAREITEMSTRUCT &);
+.END
+
+.DeleteItem
+    DeleteItem(DELETEITEMSTRUCT &);
+.END
+
+.DrawItem
+    DrawItem(DRAWITEMSTRUCT &drawInfo);
+.END
+
+.MeasureItem
+    MeasureItem(MEASUREITEMSTRUCT &);
+.END
+
+.ODADrawEntire
+    ODADrawEntire(DRAWITEMSTRUCT &);
+.END
+
+.ODAFocus
+    ODAFocus(DRAWITEMSTRUCT &);
+.END
+
+.ODASelect
+    ODASelect(DRAWITEMSTRUCT &);
+.END
+
+
+[TCursor]
+.Select
+    Select()
+.END
+
+.Restore
+    Restore()
+.END
+
+.Show
+    Show()
+.END
+
+.Hide
+    Hide()
+.END
+
+
+
+[TDC]
+.Init
+    Init()
+.END
+
+.Init
+    Init(int y)
+.END
+
+.OWLFastWindowFrame
+    OWLFastWindowFrame(TBrush &brush, TRect &r, int xWidth, int yWidth)
+.END
+
+.SaveDC
+    SaveDC()
+.END
+
+.RestoreDC
+    RestoreDC(int savedIndex)
+.END
+
+.GetDeviceCaps
+    GetDeviceCaps(int index)
+.END
+
+.SelectObject
+    SelectObject(const TBrush &brush)
+.END
+
+.SelectObject
+    SelectObject(const TPen &pen)
+.END
+
+.SelectObject
+    SelectObject(const TFont &font)
+.END
+
+.SelectStockObject
+    SelectStockObject(int index)
+.END
+
+.RestoreBrush
+    RestoreBrush()
+.END
+
+.RestorePen
+    RestorePen()
+.END
+
+.RestoreFont
+    RestoreFont()
+.END
+
+.RestorePalette
+    RestorePalette()
+.END
+
+.RestoreObjects
+    RestoreObjects()
+.END
+
+.GetBrushOrg
+    GetBrushOrg(TPoint &point)
+.END
+
+.SetBrushOrg
+    SetBrushOrg(const TPoint &org, TPoint *oldOrg)
+.END
+
+.GetNearestColor
+    GetNearestColor(TColor color)
+.END
+
+.GetBkColor
+    GetBkColor()
+.END
+
+.SetBkColor
+    SetBkColor(TColor color)
+.END
+
+.GetBkMode
+    GetBkMode()
+.END
+
+.SetBkMode
+    SetBkMode(int mode)
+.END
+
+.GetPolyFillMode
+    GetPolyFillMode()
+.END
+
+.SetPolyFillMode
+    SetPolyFillMode(int mode)
+.END
+
+.GetROP2
+    GetROP2()
+.END
+
+.SetROP2
+    SetROP2(int mode)
+.END
+
+.GetStretchBltMode
+    GetStretchBltMode()
+.END
+
+.SetStretchBltMode
+    SetStretchBltMode(int mode)
+.END
+
+.GetTextColor
+    GetTextColor()
+.END
+
+.SetTextColor
+    SetTextColor(TColor color)
+.END
+
+.GetMapMode
+    GetMapMode()
+.END
+
+.SetMapMode
+    SetMapMode(int mode)
+.END
+
+.GetViewportOrg
+    GetViewportOrg(TPoint &point)
+.END
+
+.SetViewportOrg
+    SetViewportOrg(const TPoint &point, TPoint *oldOrg)
+.END
+
+.OffsetViewportOrg
+    OffsetViewportOrg(const TPoint &delta, TPoint *oldOrg)
+.END
+
+.GetViewportExt
+    GetViewportExt(TSize &extent)
+.END
+
+.SetViewportExt
+    SetViewportExt(const TSize &extent, TSize *oldExtent)
+.END
+
+.ScaleViewportExt
+    ScaleViewportExt(int xNum, int xDenom, int yNum, int yDenom,
+.END
+
+.GetWindowOrg
+    GetWindowOrg(TPoint &point)
+.END
+
+.SetWindowOrg
+    SetWindowOrg(const TPoint &point, TPoint *oldOrg)
+.END
+
+.OffsetWindowOrg
+    OffsetWindowOrg(const TPoint &delta, TPoint *oldOrg)
+.END
+
+.GetWindowExt
+    GetWindowExt(TSize &extent)
+.END
+
+.SetWindowExt
+    SetWindowExt(const TSize &extent, TSize *oldExtent)
+.END
+
+.ScaleWindowExt
+    ScaleWindowExt(int xNum, int xDenom, int yNum, int yDenom, TSize *oldExtent)
+.END
+
+.DPtoLP
+    DPtoLP(TPoint *points, int count)
+.END
+
+.GetClipBox
+    GetClipBox(TRect &rect)
+.END
+
+.ExcludeClipRect
+    ExcludeClipRect(const TRect &rect)
+.END
+
+.ExcludeUpdateRgn
+    ExcludeUpdateRgn(HWND Wnd)
+.END
+
+.IntersectClipRect
+    IntersectClipRect(const TRect &rect)
+.END
+
+.OffsetClipRgn
+    OffsetClipRgn(const TPoint &delta)
+.END
+
+.SelectClipRgn
+    SelectClipRgn(const TRegion &region)
+.END
+
+.PtVisible
+    PtVisible(const TPoint &point)
+.END
+
+.RectVisible
+    RectVisible(const TRect &rect)
+.END
+
+.GetBoundsRect
+    GetBoundsRect(TRect &bounds, WORD flags)
+.END
+
+.SetBoundsRect
+    SetBoundsRect(TRect &bounds, UINT flags)
+.END
+
+.GetCurrentPosition
+    GetCurrentPosition(TPoint &point)
+.END
+
+.MoveTo
+    MoveTo(const TPoint &point)
+.END
+
+.DrawIcon
+    DrawIcon(int x, int y, const TIcon &icon)
+.END
+
+.DrawIcon
+    DrawIcon(const TPoint &point, const TIcon &icon)
+.END
+
+.BrushBox
+    BrushBox(const TRect &rect, HBRUSH brush)
+.END
+
+.FrameRect
+    FrameRect(const TRect &rect, const TBrush &brush)
+.END
+
+.FillRect
+    FillRect(const TRect &rect, const TBrush &brush)
+.END
+
+.InvertRect
+    InvertRect(const TRect &rect)
+.END
+
+.DrawFocusRect
+    DrawFocusRect(const TRect &rect)
+.END
+
+.TextRect
+    TextRect(const TRect &rect)
+.END
+
+.TextRect
+    TextRect(const TRect &rect, TColor color)
+.END
+
+.FrameRgn
+    FrameRgn(const TRegion &region, const TBrush &brush, const TSize &p)
+.END
+
+.FillRgn
+    FillRgn(const TRegion &region, const TBrush &brush)
+.END
+
+.InvertRgn
+    InvertRgn(const TRegion &region)
+.END
+
+.PaintRgn
+    PaintRgn(const TRegion &region)
+.END
+
+.SetArcParams
+    SetArcParams(const TRect &bound, TPoint &center) const
+.END
+
+.PieArcChord
+    PieArcChord(const TRect &bound, const TPoint &rad1, const TPoint &rad2,
+.END
+
+.SetArcDirection
+    SetArcDirection(int direction)
+.END
+
+.Arc
+    Arc(const TRect &bound, const TPoint &rad1, const TPoint &rad2)
+.END
+
+.Chord
+    Chord(const TRect &bound, const TPoint &rad1, const TPoint &rad2)
+.END
+
+.Pie
+    Pie(const TRect &bound, const TPoint &rad1, const TPoint &rad2)
+.END
+
+.Ellipse
+    Ellipse(const TRect &bound)
+.END
+
+.LineTo
+    LineTo(const TPoint &point)
+.END
+
+.Polyline
+    Polyline(const TPoint *points, int count)
+.END
+
+.Polygon
+    Polygon(const TPoint *points, int count)
+.END
+
+.PolyPolygon
+    PolyPolygon(const TPoint *points, const int PolyCounts[], int count)
+.END
+
+.RoundRect
+    RoundRect(const TRect &rect, const TPoint &rad)
+.END
+
+.GetPixel
+    GetPixel(int x, int y)
+.END
+
+.GetPixel
+    GetPixel(const TPoint &point)
+.END
+
+.SetPixel
+    SetPixel(int x, int y, TColor color)
+.END
+
+.SetPixel
+    SetPixel(const TPoint &point, TColor color)
+.END
+
+.Blt
+    Blt(HDC Src, TPoint point[4], DWORD rop)
+.END
+
+.BitBlt
+    BitBlt(int dstX, int dstY, int w, int h,
+.END
+
+.BitBlt
+    BitBlt(const TRect &dst, const TDC &srcDC, const TPoint &src, DWORD rop)
+.END
+
+.PatBlt
+    PatBlt(int x, int y, int w, int h, DWORD rop)
+.END
+
+.PatBlt
+    PatBlt(const TRect &dst, DWORD rop)
+.END
+
+.ScrollDC
+    ScrollDC(int dx, int dy, const TRect &scroll, const TRect &clip,
+.END
+
+.ScrollDC
+    ScrollDC(const TSize &delta, const TRect &scroll, const TRect &clip,
+.END
+
+.StretchBlt
+    StretchBlt(int dstX, int dstY, int dstW, int dstH,
+.END
+
+.StretchBlt
+    StretchBlt(const TRect &dst,
+.END
+
+.GetDIBits
+    GetDIBits(const TBitmap &bitmap, WORD startScan, WORD numScans,
+.END
+
+.GetDIBits
+    GetDIBits(const TBitmap &bitmap, TDib &dib)
+.END
+
+.SetDIBits
+    SetDIBits(TBitmap &bitmap, WORD startScan, WORD numScans,
+.END
+
+.SetDIBits
+    SetDIBits(TBitmap &bitmap, const TDib &dib)
+.END
+
+.DrawBits
+    DrawBits(const TPoint point[4], const void *bits, const BITMAPINFO *info, UINT rop)
+.END
+
+.SetDIBitsToDevice
+    SetDIBitsToDevice(const TRect &dst, const TPoint &src, WORD startScan,
+.END
+
+.SetDIBitsToDevice
+    SetDIBitsToDevice(const TRect &dst, const TPoint &src, const TDib &dib)
+.END
+
+.StretchDIBits
+    StretchDIBits(const TRect &dst, const TRect &src,
+.END
+
+.StretchDIBits
+    StretchDIBits(const TRect &dst, const TRect &src, const TDib &dib, DWORD rop)
+.END
+
+.FloodFill
+    FloodFill(const TPoint &point, TColor color)
+.END
+
+.ExtFloodFill
+    ExtFloodFill(const TPoint &point, TColor color, WORD fillType)
+.END
+
+.TextOut
+    TextOut(int x, int y, const char *str, int count)
+.END
+
+.ExtTextOut
+    ExtTextOut(int x, int y, WORD options, const TRect *rect,
+.END
+
+.TabbedTextOut
+    TabbedTextOut(const TPoint &p, const char *str, int strLen,
+.END
+
+.DrawText
+    DrawText(const char *str, int count, const TRect &rect, WORD format)
+.END
+
+.GrayString
+    GrayString(const TBrush &brush, GRAYSTRINGPROC outputFunc,
+.END
+
+.GetTextExtent
+    GetTextExtent(const char *str, int stringLen, TSize &size) const
+.END
+
+.GetTabbedTextExtent
+    GetTabbedTextExtent(const char *str, int strLen, int numPositions,
+.END
+
+.GetTextAlign
+    GetTextAlign()
+.END
+
+.SetTextAlign
+    SetTextAlign(UINT flags)
+.END
+
+.GetTextCharacterExtra
+    GetTextCharacterExtra()
+.END
+
+.SetTextCharacterExtra
+    SetTextCharacterExtra(int extra)
+.END
+
+.SetTextJustification
+    SetTextJustification(int breakExtra, int breakCount)
+.END
+
+.GetTextFace
+    GetTextFace(int count, char *facename)
+.END
+
+.GetTextMetrics
+    GetTextMetrics(TEXTMETRIC &metrics)
+.END
+
+.GetKerningPairs
+    GetKerningPairs(int pairs, KERNINGPAIR *krnPair)
+.END
+
+.GetCharWidth
+    GetCharWidth(UINT firstChar, UINT lastChar, int *buffer)
+.END
+
+.SetMapperFlags
+    SetMapperFlags(DWORD flag)
+.END
+
+.GetAspectRatioFilter
+    GetAspectRatioFilter(TSize &size)
+.END
+
+.EnumFonts
+    EnumFonts(const char *faceName, OLDFONTENUMPROC callback, LPVOID data)
+.END
+
+.EnumFontFamilies
+    EnumFontFamilies(const char *family, FONTENUMPROC callback, LPVOID data)
+.END
+
+.BeginPath
+    BeginPath()
+.END
+
+.CloseFigure
+    CloseFigure()
+.END
+
+.EndPath
+    EndPath()
+.END
+
+.FillPath
+    FillPath()
+.END
+
+.StrokePath
+    StrokePath()
+.END
+
+.StrokeAndFillPath
+    StrokeAndFillPath()
+.END
+
+.SelectClipPath
+    SelectClipPath(int mode)
+.END
+
+.PathToRegion
+    PathToRegion()
+.END
+
+.BeginWideLine
+    BeginWideLine()
+.END
+
+.EndWideLine
+    EndWideLine(HBRUSH save)
+.END
+
+
+
+[TDialog]
+.GetClassName
+    GetClassName()
+.END
+
+.Create
+    Create()
+.END
+
+.DoCreate
+    DoCreate()
+.END
+
+.Execute
+    Execute()
+.END
+
+.DoExecute
+    DoExecute()
+.END
+
+.PerformDlgInit
+    PerformDlgInit()
+.END
+
+.SetupWindow
+    SetupWindow()
+.END
+
+.CloseWindow
+    CloseWindow(int retValue)
+.END
+
+.Destroy
+    Destroy(int retValue)
+.END
+
+.GetDlgCtrlId
+    GetDlgCtrlId(HWND hwnd) const
+.END
+
+.CmOk
+    CmOk()
+.END
+
+.CmCancel
+    CmCancel()
+.END
+
+
+
+[TDecoratedFrame]
+.SetupWindow
+    SetupWindow()
+.END
+
+.SetClientWindow
+    SetClientWindow(TWindow *clientWnd)
+.END
+
+.PreProcessMsg
+    PreProcessMsg(MSG &msg)
+.END
+
+.TLocation
+    SetLocation(tLocation(TWindow &w, TDecoratedFrame::TLocation loc)
+.END
+
+.InsertAtTop
+    InsertAtTop(TWindow &decoration, TWindow *insertAbove)
+.END
+
+.InsertAtBottom
+    InsertAtBottom(TWindow &decoration, TWindow *insertBelow)
+.END
+
+.InsertAtLeft
+    InsertAtLeft(TWindow &decoration, TWindow *insertLeftOf)
+.END
+
+.InsertAtRight
+    InsertAtRight(TWindow &decoration, TWindow *insertRightOf)
+.END
+
+.Insert
+    Insert(TWindow &decoration, TLocation location)
+.END
+
+[TEdit]
+.GetNumLines
+    GetNumLines()
+.END
+
+.IsModified
+    IsModified()
+.END
+
+.ClearModify
+    ClearModify()
+.END
+
+.SetSelection
+    SetSelection(UINT startPos, UINT endPos)
+.END
+
+.GetSelection
+    GetSelection(UINT &startPos, UINT &endPos)
+.END
+
+.GetLineFromPos
+    GetLineFromPos(UINT charPos)
+.END
+
+.GetLineIndex
+    GetLineIndex(int lineNumber)
+.END
+
+.Scroll
+    Scroll(int horizUnit, int vertUnit)
+.END
+
+.Insert
+    Insert(const char *str)
+.END
+
+.GetRect
+    GetRect(TRect &frmtRect)
+.END
+
+.SetRect
+    SetRect(const TRect &frmtRect)
+.END
+
+.SetRectNP
+    SetRectNP(const TRect &frmtRect)
+.END
+
+.FormatLines
+    FormatLines(BOOL addEOL)
+.END
+
+.SetTabStops
+    SetTabStops(int numTabs, const int *tabs)
+.END
+
+.SetPasswordChar
+    SetPasswordChar(UINT ch)
+.END
+
+.GetFirstVisibleLine
+    GetFirstVisibleLine()
+.END
+
+.SetReadOnly
+    SetReadOnly(BOOL readOnly)
+.END
+
+.GetPasswordChar
+    GetPasswordChar()
+.END
+
+.GetWordBreakProc
+    GetWordBreakProc()
+.END
+
+.SetWordBreakProc
+    SetWordBreakProc(EDITWORDBREAKPROC proc)
+.END
+
+.CanUndo
+    CanUndo()
+.END
+
+.EmptyUndoBuffer
+    EmptyUndoBuffer()
+.END
+
+.Undo
+    Undo()
+.END
+
+.Paste
+    Paste()
+.END
+
+.Copy
+    Copy()
+.END
+
+.Cut
+    Cut()
+.END
+
+.ENErrSpace
+    ENErrSpace()
+.END
+
+.ValidatorError
+    ValidatorError()
+.END
+
+.Clear
+    Clear()
+.END
+
+.CanClose
+    CanClose()
+.END
+
+.CmSelectEnable
+    CmSelectEnable(TCommandEnabler &commandHandler)
+.END
+
+.CmPasteEnable
+    CmPasteEnable(TCommandEnabler &commandHandler)
+.END
+
+.CmCharsEnable
+    CmCharsEnable(TCommandEnabler &commandHandler)
+.END
+
+.CmModEnable
+    CmModEnable(TCommandEnabler &commandHandler)
+.END
+
+.GetLineLength
+    GetLineLength(int lineNumber)
+.END
+
+.GetLine
+    GetLine(char *textString, int strSize, int lineNumber)
+.END
+
+.LockBuffer
+    LockBuffer(UINT newSize)
+.END
+
+.UnlockBuffer
+    UnlockBuffer(const char *buffer, BOOL updateHandle)
+.END
+
+.Search
+    Search(UINT startPos, const char *text, BOOL caseSensitive,
+.END
+
+.DeleteSelection
+    DeleteSelection()
+.END
+
+.DeleteSubText
+    DeleteSubText(UINT startPos, UINT endPos)
+.END
+
+.DeleteLine
+    DeleteLine(int lineNumber)
+.END
+
+.GetSubText
+    GetSubText(char *textString, UINT startPos, UINT endPos)
+.END
+
+.GetClassName
+    GetClassName()
+.END
+
+.SetupWindow
+    SetupWindow()
+.END
+
+.IsValid
+    IsValid(BOOL reportError)
+.END
+
+.SetValidator
+    SetValidator(TValidator *validator)
+.END
+
+.Transfer
+    Transfer(void *buffer, TTransferDirection direction)
+.END
+
+
+
+[TEditFile]
+.SetupWindow
+    SetupWindow()
+.END
+
+.SetFileName
+    SetFileName(const char *fileName)
+.END
+
+.NewFile
+    NewFile()
+.END
+
+.ReplaceWith
+    ReplaceWith(const char *fileName)
+.END
+
+.Open
+    Open()
+.END
+
+.Read
+    Read(const char *fileName)
+.END
+
+.Save
+    Save()
+.END
+
+.SaveAs
+    SaveAs()
+.END
+
+.CmSaveEnable
+    CmSaveEnable(TCommandEnabler &commandHandler)
+.END
+
+.Write
+    Write(const char *fileName)
+.END
+
+.CanClear
+    CanClear()
+.END
+
+.CanClose
+    CanClose()
+.END
+
+
+[TEditSearch]
+.SetupWindow
+    SetupWindow()
+.END
+
+.DoSearch
+    DoSearch()
+.END
+
+.CmEditFind
+    CmEditFind()
+.END
+
+.CmEditReplace
+    CmEditReplace()
+.END
+
+.CeEditFindReplace
+    CeEditFindReplace(TCommandEnabler &ce)
+.END
+
+.CeEditFindNext
+    CeEditFindNext(TCommandEnabler &ce)
+.END
+
+.CmEditFindNext
+    CmEditFindNext()
+.END
+
+
+
+[TEditView]
+.VnDocClosed
+    VnDocClosed(int omode)
+.END
+
+.LoadData
+    LoadData()
+.END
+
+.Create
+    Create()
+.END
+
+.PerformCreate
+    PerformCreate(int menuOrId)
+.END
+
+.VnCommit
+    VnCommit(BOOL force)
+.END
+
+.VnRevert
+    VnRevert(BOOL clear)
+.END
+
+
+
+[TFileDocument]
+.OpenThisFile
+    OpenThisFile(int omode, LPCSTR name, streampos *pseekpos)
+.END
+
+.CloseThisFile
+    CloseThisFile(HFILE fhdl, int omode)
+.END
+
+.Open
+    Open(int omode, LPCSTR path)
+.END
+
+.Open
+    Open(HFILE fhdl)
+.END
+
+.Close
+    Close()
+.END
+
+.Commit
+    Commit(BOOL force)
+.END
+
+.Revert
+    Revert(BOOL clear)
+.END
+
+.PropertyName
+    PropertyName(int index)
+.END
+
+.PropertyFlags
+    PropertyFlags(int index)
+.END
+
+.FindProperty
+    FindProperty(const char *name)
+.END
+
+.GetProperty
+    GetProperty(int prop, void *dest, int textlen)
+.END
+
+.SetProperty
+    SetProperty(int prop, const void *src)
+.END
+
+.InStream
+    InStream(int omode, LPCSTR  strmId)
+.END
+
+.utStream
+    OutStream(int omode, LPCSTR strmId)
+.END
+
+
+
+
+[TFrameWindow]
+.TMenuItemEnabler::Enable
+    TMenuItemEnabler::Enable(BOOL enable)
+.END
+
+.TMenuItemEnabler::SetText
+    TMenuItemEnabler::SetText(const char *str)
+.END
+
+.TMenuItemEnabler::SetCheck
+    TMenuItemEnabler::SetCheck(int state)
+.END
+
+.TFrameWindow
+    TFrameWindow(TWindow *       parent,
+.END
+
+.TFrameWindow
+    TFrameWindow(HWND hWnd, TModule *module)
+.END
+
+.TFrameWindow
+    TFrameWindow()
+.END
+
+.Init
+    Init(TWindow *clientWnd, BOOL shrinkToClient)
+.END
+
+.Init
+    Init(TWindow *clientWnd)
+.END
+
+.IdleAction
+    IdleAction(long idleCount)
+.END
+
+.GetCommandTarget
+    GetCommandTarget()
+.END
+
+.SetMenu
+    SetMenu(HMENU hMenu)
+.END
+
+.AssignMenu
+    AssignMenu(TResId menuResId)
+.END
+
+.SetInitMenu
+    SetInitMenu()
+.END
+
+.SetIcon
+    SetIcon(TModule *module, TResId resId)
+.END
+
+.GetClientWindow
+    GetClientWindow() const
+.END
+
+.SetClientWindow
+    SetClientWindow(TWindow *clientWnd)
+.END
+
+.SetDocTitle
+    SetDocTitle(const char *docname, int index)
+.END
+
+.GetClassName
+    GetClassName()
+.END
+
+.FirstChildWithTab
+    FirstChildWithTab()
+.END
+
+.HoldFocusHWnd
+    HoldFocusHWnd(HWND hWndLose, HWND hWndGain)
+.END
+
+.ResizeClientWindow
+    ResizeClientWindow(BOOL redraw)
+.END
+
+.SetupWindow
+    SetupWindow()
+.END
+
+.SetMenuDescr
+    SetMenuDescr(const TMenuDescr &menuDescr)
+.END
+
+.MergeMenu
+    MergeMenu(const TMenuDescr &childMenuDescr)
+.END
+
+.RestoreMenu
+    RestoreMenu()
+.END
+
+[TWindow]
+.InitWndProc
+    InitWndProc(HWND hWindow, UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.DefaultProcessing
+    DefaultProcessing()
+.END
+
+.DefWindowProc
+    DefWindowProc(UINT message, WPARAM wParam, LPARAM lParam)
+.END
+
+.WindowProc
+    WindowProc(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.ReceiveMessage
+    ReceiveMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.SetupWindow
+    SetupWindow()
+.END
+
+.CleanupWindow
+    CleanupWindow()
+.END
+
+.SetColor
+    SetColor(TBrush *fore)
+.END
+
+.SetBkgndColor
+    SetBkgndColor(COLORREF color)
+.END
+
+.DispatchScroll
+    DispatchScroll(UINT scrollCode, UINT /*thumbPos*/, HWND hWndCtrl)
+.END
+
+.GetWindowClass
+    GetWindowClass(WNDCLASS &wndClass)
+.END
+
+.Register
+    Register()
+.END
+
+.CmExit
+    CmExit()
+.END
+
+.TXWindow::Msg
+    TXWindow::Msg(TWindow *win, UINT resId)
+.END
+
+.TXWindow::TXWindow
+    TXWindow::TXWindow(TWindow *win, UINT resId)
+.END
+
+.TXWindow::TXWindow
+    TXWindow::TXWindow(const TXWindow &src)
+.END
+
+.TXWindow::Unhandled
+    TXWindow::Unhandled(TModule *app, unsigned promptResId)
+.END
+
+.TXWindow::Clone
+    TXWindow::Clone()
+.END
+
+.FirstThat
+    FirstThat(TCondFunc test, void *paramList)
+.END
+
+.ForEach
+    ForEach(TActionFunc action, void *paramList)
+.END
+
+.FirstThat
+    FirstThat(TCondMemFunc test, void *paramList)
+.END
+
+.ForEach
+    ForEach(TActionMemFunc action, void *paramList)
+.END
+
+.Previous
+    Previous()
+.END
+
+.NumChildren
+    NumChildren()
+.END
+
+.Create
+    Create()
+.END
+
+.PerformCreate
+    PerformCreate(int menuOrId)
+.END
+
+.CreateChildren
+    CreateChildren()
+.END
+
+.Destroy
+    Destroy(int retVal)
+.END
+
+.CloseWindow
+    CloseWindow(int retVal)
+.END
+
+.ShutDownWindow
+    ShutDownWindow(TWindow *win, int retVal)
+.END
+
+.HandleMessage
+    HandleMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.Paint
+    Paint(TDC&, BOOL, TRect&)
+.END
+
+.ForwardMessage
+    ForwardMessage(HWND hWnd, BOOL send)
+.END
+
+.ForwardMessage
+    ForwardMessage(BOOL send)
+.END
+
+.ChildBroadcastMessage
+    ChildBroadcastMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.ChildWithId
+    ChildWithId(int id) const
+.END
+
+.SetParent
+    SetParent(TWindow *newParent)
+.END
+
+.SetDocTitle
+    SetDocTitle(LPCSTR docname, int index)
+.END
+
+.PreProcessMsg
+    PreProcessMsg(MSG&)
+.END
+
+.IdleAction
+    IdleAction(long)
+.END
+
+.HoldFocusHWnd
+    HoldFocusHWnd(HWND, HWND)
+.END
+
+.Transfer
+    Transfer(void *buffer, TTransferDirection direction)
+.END
+
+.TransferData
+    TransferData(TTransferDirection direction)
+.END
+
+.SendMessage
+    SendMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.Show
+    Show(int showCmd)
+.END
+
+.SetCaption
+    SetCaption(const char *title)
+.END
+
+.GetWindowTextTitle
+    GetWindowTextTitle()
+.END
+
+.GetHWndState
+    GetHWndState()
+.END
+
+.SetCursor
+    SetCursor(TModule *module, TResId resId)
+.END
+
+.CanClose
+    CanClose()
+.END
+
+.GetUpdateRgn
+    GetUpdateRgn(TRegion &rgn, BOOL erase) const
+.END
+
+.MessageBox
+    MessageBox(const char *text, const char *caption,
+.END
+
+.MessageBox
+    MessageBox(UINT type, TResId format, ...)
+.END
+
+.GetClassName
+    GetClassName()
+.END
+
+.PMWindowClass
+    PMWindowClass(HWND hwnd)
+.END
+
+.LoadAcceleratorTable
+    LoadAcceleratorTable()
+.END
+
+.RemoveChild
+    RemoveChild(TWindow *child)
+.END
+
+.OrderIsI
+    OrderIsI(TWindow *win, void *position)
+.END
+
+.AssignZOrder
+    AssignZOrder()
+.END
+
+.AddChild
+    AddChild(TWindow *child)
+.END
+
+.IndexOf
+    IndexOf(TWindow *child)
+.END
+
+.At
+    At(int position)
+.END
+
+.SetUniqueId
+    SetUniqueId()
+.END
+
+.EnableUpdate
+    EnableUpdate(BOOL enable)
+.END
+
+.IsWindow
+    IsWindow() const
+.END
+
+.SendDlgItemMessage
+    SendDlgItemMessage(int childId, UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.PostMessage
+    PostMessage(UINT msg, WPARAM wParam, LPARAM lParam)
+.END
+
+.GetCapture
+    GetCapture()
+.END
+
+.SetCapture
+    SetCapture()
+.END
+
+.ReleaseCapture
+    ReleaseCapture()
+.END
+
+.GetFocus
+    GetFocus()
+.END
+
+.SetFocus
+    SetFocus()
+.END
+
+.IsWindowEnabled
+    IsWindowEnabled() const
+.END
+
+.EnableWindow
+    EnableWindow(BOOL enable)
+.END
+
+.SetRedraw
+    SetRedraw(BOOL redraw)
+.END
+
+.ScreenToClient
+    ScreenToClient(TPoint &point) const
+.END
+
+.MapWindowPoints
+    MapWindowPoints(HWND hWndTo, TPoint *points, int count) const
+.END
+
+.GetClientRect
+    GetClientRect(TRect &rect) const
+.END
+
+.GetClientRect
+    GetClientRect() const
+.END
+
+.WindowFromPoint
+    WindowFromPoint(const TPoint &point)
+.END
+
+.ChildWindowFromPoint
+    ChildWindowFromPoint(const TPoint &point) const
+.END
+
+.ClientToScreen
+    ClientToScreen(TPoint &point) const
+.END
+
+.GetWindowRect
+    GetWindowRect(TRect &rect) const
+.END
+
+.GetWindowRect
+    GetWindowRect() const
+.END
+
+.AdjustWindowRect
+    AdjustWindowRect(TRect &rect, DWORD , BOOL )
+.END
+
+.AdjustWindowRectEx
+    AdjustWindowRectEx(TRect &rect, DWORD , BOOL , DWORD )
+.END
+
+.GetClassName
+    GetClassName(char *className, int maxCount) const
+.END
+
+.GetClassLong
+    GetClassLong(int index) const
+.END
+
+.SetClassLong
+    SetClassLong(int index, long newLong)
+.END
+
+.GetClassWord
+    GetClassWord(int index) const
+.END
+
+.SetClassWord
+    SetClassWord(int index, WORD newWord)
+.END
+
+.GetWindowLong
+    GetWindowLong(int index) const
+.END
+
+.GetSystemMetrics
+    GetSystemMetrics(int index)
+.END
+
+.SetWindowLong
+    SetWindowLong(int index, long newLong)
+.END
+
+.GetWindowWord
+    GetWindowWord(int index) const
+.END
+
+.SetWindowWord
+    SetWindowWord(int index, WORD newWord)
+.END
+
+.GetProp
+    GetProp(ATOM atom) const
+.END
+
+.RemoveProp
+    RemoveProp(ATOM atom) const
+.END
+
+.SetProp
+    SetProp(ATOM atom, HANDLE data) const
+.END
+
+.GetProp
+    GetProp(const char *str) const
+.END
+
+.RemoveProp
+    RemoveProp(const char *str) const
+.END
+
+.SetProp
+    SetProp(const char *str, HANDLE data) const
+.END
+
+.MoveWindow
+    MoveWindow(int x, int y, int w, int h, BOOL repaint)
+.END
+
+.MoveWindow
+    MoveWindow(const TRect &rect, BOOL repaint)
+.END
+
+.ShowWindow
+    ShowWindow(int cmdShow)
+.END
+
+.IsWindowVisible
+    IsWindowVisible() const
+.END
+
+.IsZoomed
+    IsZoomed() const
+.END
+
+.IsIconic
+    IsIconic() const
+.END
+
+.GetWindowTextLength
+    GetWindowTextLength() const
+.END
+
+.GetWindowText
+    GetWindowText(char *str, int maxCount) const
+.END
+
+.SetWindowText
+    SetWindowText(const char *str)
+.END
+
+.GetWindowPlacement
+    GetWindowPlacement(WINDOWPLACEMENT *place) const
+.END
+
+.SetWindowPlacement
+    SetWindowPlacement(const WINDOWPLACEMENT *place)
+.END
+
+.BringWindowToTop
+    BringWindowToTop()
+.END
+
+.GetActiveWindow
+    GetActiveWindow()
+.END
+
+.SetActiveWindow
+    SetActiveWindow()
+.END
+
+.GetDesktopWindow
+    GetDesktopWindow()
+.END
+
+.GetSysModalWindow
+    GetSysModalWindow()
+.END
+
+.SetSysModalWindow
+    SetSysModalWindow()
+.END
+
+.GetNextWindow
+    GetNextWindow(UINT flag) const
+.END
+
+.GetWindow
+    GetWindow(UINT flag) const
+.END
+
+.GetTopWindow
+    GetTopWindow() const
+.END
+
+.SetWindowPos
+    SetWindowPos(HWND insAfter, const TRect &rect, UINT flags)
+.END
+
+.SetWindowPos
+    SetWindowPos(HWND insAfter, int x, int y, int w, int h, UINT flags)
+.END
+
+.Invalidate
+    Invalidate(BOOL)
+.END
+
+.InvalidateRect
+    InvalidateRect(const TRect &rect, BOOL)
+.END
+
+.InvalidateRgn
+    InvalidateRgn(HRGN hRgn, BOOL)
+.END
+
+.Validate
+    Validate()
+.END
+
+.ValidateRect
+    ValidateRect(const TRect &rect)
+.END
+
+.ValidateRgn
+    ValidateRgn(HRGN hRgn)
+.END
+
+.UpdateWindow
+    UpdateWindow()
+.END
+
+.FlashWindow
+    FlashWindow(BOOL invert)
+.END
+
+.GetUpdateRect
+    GetUpdateRect(TRect &rect, BOOL erase) const
+.END
+
+.LockWindowUpdate
+    LockWindowUpdate()
+.END
+
+.RedrawWindow
+    RedrawWindow(TRect *update, HRGN hUpdateRgn, UINT redraw)
+.END
+
+.GetScrollPos
+    GetScrollPos(int bar) const
+.END
+
+.SetScrollPos
+    SetScrollPos(int bar, int pos, BOOL )
+.END
+
+.GetScrollRange
+    GetScrollRange(int bar, int &minPos, int &maxPos) const
+.END
+
+.SetScrollRange
+    SetScrollRange(int bar, int minPos, int maxPos, BOOL )
+.END
+
+.EnableScrollBar
+    EnableScrollBar(UINT , UINT )
+.END
+
+.ShowScrollBar
+    ShowScrollBar(int bar, BOOL show)
+.END
+
+.ScrollWindow
+    ScrollWindow(int dx, int dy, const TRect *scroll, const TRect *clip)
+.END
+
+.ScrollWindowEx
+    ScrollWindowEx(int dx, int dy, const TRect *scroll,
+.END
+
+.GetDlgCtrlId
+    GetDlgCtrlId() const
+.END
+
+.GetDlgItem
+    GetDlgItem(int childId) const
+.END
+
+.GetDlgItemInt
+    GetDlgItemInt(int childId, BOOL *succ, BOOL isSigned) const
+.END
+
+.SetDlgItemInt
+    SetDlgItemInt(int childId, UINT value, BOOL isSigned) const
+.END
+
+.GetDlgItemText
+    GetDlgItemText(int childId, char *text, int max) const
+.END
+
+.SetDlgItemText
+    SetDlgItemText(int childId, const char *text) const
+.END
+
+.IsDlgButtonChecked
+    IsDlgButtonChecked(int buttonId) const
+.END
+
+.GetParent
+    GetParent() const
+.END
+
+.IsChild
+    IsChild(HWND hWnd) const
+.END
+
+.GetNextDlgGroupItem
+    GetNextDlgGroupItem(HWND hWndCtrl, BOOL previous) const
+.END
+
+.GetNextDlgTabItem
+    GetNextDlgTabItem(HWND hWndCtrl, BOOL previous) const
+.END
+
+.CheckDlgButton
+    CheckDlgButton(int buttonId, UINT check)
+.END
+
+.CheckRadioButton
+    CheckRadioButton(int firstButtonId, int lastButtonId, int checkButtonId)
+.END
+
+.GetMenu
+    GetMenu() const
+.END
+
+.GetSystemMenu
+    GetSystemMenu(BOOL) const
+.END
+
+.SetMenu
+    SetMenu(HMENU hMenu)
+.END
+
+.HiliteMenuItem
+    HiliteMenuItem(HMENU hMenu, UINT idItem, UINT hilite)
+.END
+
+.DrawMenuBar
+    DrawMenuBar()
+.END
+
+.KillTimer
+    KillTimer(UINT timerId)
+.END
+
+.SetTimer
+    SetTimer(UINT timerId, UINT timeout)
+.END
+
+.CreateCaret
+    CreateCaret(BOOL isGray, int width, int height)
+.END
+
+.DestroyCaret
+    DestroyCaret()
+.END
+
+.GetCaretBlinkTime
+    GetCaretBlinkTime()
+.END
+
+.GetCaretPos
+    GetCaretPos(TPoint &point)
+.END
+
+.HideCaret
+    HideCaret()
+.END
+
+.SetCaretBlinkTime
+    SetCaretBlinkTime(WORD milliSecs)
+.END
+
+.SetCaretPos
+    SetCaretPos(int x, int y)
+.END
+
+.ShowCaret
+    ShowCaret()
+.END
+
+.SetCursorPos
+    SetCursorPos(TPoint pos)
+.END
+
+.GetCursorPos
+    GetCursorPos(TPoint &pos)
+.END
+
+.SetWindowFont
+    SetWindowFont(HFONT font, BOOL redraw)
+.END
+
+.GetWindowFont
+    GetWindowFont()
+.END
+
+.GetWindowTask
+    GetWindowTask() const
+.END
+
+.DragAcceptFiles
+    DragAcceptFiles(BOOL accept)
+.END
+
+[TStatic]
+.GetTextLength
+int   GetTextLen();  // returns the length of the control's text
+.END
+
+.GetText
+int   GetText(char *str, int maxChars);
+.END
+
+
+.SetText
+void  SetText(const char *str);
+.END
+
+
+.Clear Text
+void Clear();
+.END
+
+.GetClassName
+char *GetClassName();
+.END
+
+
+[TGauge]
+.GetRange
+void GetRange(int &min, int &max);
+.END
+
+.GetValue
+int GetValue();
+.END
+
+.SetRange
+void SetRange(int min, int max);
+.END
+
+.SetValue
+void SetValue(int value);
+.END
+
+.SetLed
+void SetLed(int spacing, int thickPercent=90);
+.End
+
+.SetColor
+void SetColor(TColor color);
+.END
+
+.Protected_Data_
+    int           Min;        // Minimum value
+    int           Max;        // Maximum value
+    int           Value;      // Current value
+    int           Margin;     // margin between bevel and graphic
+    int           IsHorizontal; // True when Horizontal layout else vertical
+    int           LedSpacing; // Spacing of 'leds' in value units
+    int           LedThick;   // Thickness of leds in percent of spacing
+    TColor        BarColor;   // Bar or LED color, defaults to blue
+.END
+
+
+[TGroupBox]
+
+.Public_Data_
+BOOL  NotifyParent;
+.END
+
+
+.GetClassName
+char *GetClassName();
+.END
+
+
+
+[TListBox]
+.GetCount
+int GetCount() const;
+.END
+
+
+.FindString
+int FindString(const char *str, int index) const;
+.END
+
+.FindExactString
+int FindExactString(const char *str, int searchIndex) const;
+.END
+
+.GetTopIndex
+int GetTopIndex() const;
+.END
+
+.SetTopIndex
+int SetTopIndex(int index);
+.END
+
+
+.SetTabStops
+BOOL SetTabStops(int numTabs, int *tabs);
+.END
+
+
+.GetHorizontalExtent
+int GetHorizontalExtent() const;
+.END
+
+.SetHorizontalExtent
+void SetHorizontalExtent(int horzExtent);
+.END
+
+.SetColumnWidth
+void SetColumnWidth(int width);
+.END
+
+.GetCaretIndex
+int GetCaretIndex() const;
+.END
+
+.SetCaretIndex
+int SetCaretIndex(int index, BOOL partScrollOk);
+.END
+
+.GetItemRect
+int GetItemRect(int index, TRect &rect) const;
+.END
+
+.GetStringLen
+int GetStringLen(int index) const;
+.END
+
+.GetString
+int  GetString(char *str, int index) const;
+.END
+
+.GetItemData
+DWORD GetItemData(int index) const;
+.END
+
+.SetItemData
+int  SetItemData(int index, DWORD itemData);
+.END
+
+
+.GetItemHeight
+int  GetItemHeight(int index) const;
+.END
+
+.SetItemHeight
+int  SetItemHeight(int index, int height);
+.END
+
+.ClearList
+void  ClearList();
+.END
+
+.DirectoryList
+int  DirectoryList(UINT attrs, const char *fileSpec);
+.END
+
+.AddString
+int AddString(const char *str);
+.END
+
+.InsertString
+int InsertString(const char *str, int index);
+.END
+
+.DeleteString
+int  DeleteString(int index);
+.END
+
+.GetSelIndex
+int  GetSelIndex() const;
+.END
+
+.SetSelIndex
+int SetSelIndex(int index);
+.END
+
+.GetSelString
+int  GetSelString(char *str, int maxChars) const;
+.END
+
+.SetSelString
+int SetSelString(const char *str, int searchIndex);
+.END
+
+.GetSelCount
+int GetSelCount() const;
+.END
+
+.GetSelStrings
+int GetSelStrings(char **strs, int maxCount, int maxChars) const;
+.END
+
+.SetSelStrings
+int SetSelStrings(const char **prefixes, int numSelections, BOOL shouldSet);
+.END
+
+
+.GetSelIndexes
+int GetSelIndexes(int* indexes, int maxCount) const;
+.END
+
+.SetSelIndexes
+int SetSelIndexes(int* indexes, int numSelections, BOOL shouldSet);
+.END
+
+.GetSel
+BOOL GetSel(int index) const;
+.END
+
+.SetSel
+int SetSel(int index, BOOL select);
+.END
+
+.SetSelItemRange
+int SetSelItemRange(BOOL select, int first, int last);
+.END
+
+.EvKeyDown
+void EvKeyDown(UINT key, UINT repeatCount, UINT flags)
+.END
+
+.GetClassName
+char *GetClassName();
+.END
+
+
+[TMenu]
+.CheckValid
+void CheckValid(UINT redId = IDS_MENUFAILURE);
+.END
+
+.AppendMenu
+BOOL AppendMenu(UINT flags, UINT idNewItem=-1, const char *newItem=0);
+.END
+
+.AppendMenu
+BOOL AppendMenu(UINT flags, UINT idNewItem, const TBitmap &newBmp);
+.END
+
+.CheckMenuItem
+BOOL CheckMenuItem(UINT idItem, UINT check);
+.END
+
+.DeleteMenu
+BOOL DeleteMenu(UINT idItem, UINT flags);
+.END
+
+.EnableMenuItem
+BOOL EnableMenuItem(UINT idItem, UINT enable);
+.END
+
+.GetMenuItemCount
+UINT GetMenuItemCount() const;
+.END
+
+.GetMenuItemID
+UINT GetMenuItemID(int posItem) const;
+.END
+
+.GetMenuState
+UINT GetMenuState(UINT idItem, UINT flags) const;
+.END
+
+.GetMenuString
+UINT GetMenuString(UINT idItem, char* str, int count, UINT flags) const;
+.END
+
+.GetSubMenu
+HMENU GetSubMenu(int posItem) const;
+.END
+
+.InsertMenu
+BOOL InsertMenu(UINT idItem, UINT flags, UINT idNewItem=-1, const char *newItem=0);
+.END
+
+.InsertMenu
+BOOL InsertMenu(UINT idItem, UINT flags, UINT idNewItem, const TBitmap &newBmp);
+.END
+
+.ModifyMenu
+BOOL ModifyMenu(UINT idItem, UINT flags, UINT idNewItem=-1, const char *newItem=0);
+.END
+
+.ModifyMenu
+BOOL ModifyMenu(UINT idItem, UINT flags, UINT idNewItem, const TBitmap &newBmp);
+.END
+
+.RemoveMenu
+BOOL        RemoveMenu(UINT idItem, UINT flags);
+.END
+
+.SetMenuItemBitmaps
+BOOL        SetMenuItemBitmaps(UINT idItem, UINT flags,
+                               const TBitmap* bmpUnchecked=0,
+                               const TBitmap* bmpChecked=0);
+.END
+
+.GetMenuCheckMarkDimensions
+static BOOL GetMenuCheckMarkDimensions(TSize &size);
+.END
+
+.MeasureItem
+void  MeasureItem(MEASUREITEMSTRUCT &measureItem);
+.END
+
+.DrawItem
+void  DrawItem(DRAWITEMSTRUCT &drawItem);
+.END
+
+.Protected_Data_
+HMENU       Handle;         // Handle To Menu
+BOOL        ShouldDelete;   // Did C++ object create Menu?
+.END
+
+
+[TRadioButton]
+.BNClicked
+void BNClicked();
+.END
+
+
+.GetClassName
+char *GetClassName();
+.END
+
+
+
+
+[TScrollBar]
+.GetRange
+void  GetRange(int &min, int &max) const;
+.END
+
+.GetPosition
+int   GetPosition() const;
+.END
+
+.SetRange
+void  SetRange(int min, int max);
+.END
+
+.SetPosition
+void  SetPosition(int thumbPos);
+.END
+
+.DeltaPos
+int   DeltaPos(int delta);
+.END
+
+
+.SBLineUp
+void  SBLineUp();
+.END
+
+.SBLineDown
+void  SBLineDown();
+.END
+
+.SBPageUp
+void  SBPageUp();
+.END
+
+.SBPageDown
+void  SBPageDown();
+.END
+
+.SBThumbPosition
+void  SBThumbPosition(int thumbPos);
+.END
+
+.SBThumbTrack
+void  SBThumbTrack(int thumbPos);
+.END
+
+.SBTop
+void  SBTop();
+.END
+
+.SBBottom
+void  SBBottom();
+.END
+
+.SBEndScroll
+void  SBEndScroll();
+.END
+
+
+.Public_Data_
+int  LineMagnitude;
+int  PageMagnitude;
+.END
+
+
+.GetClassName
+char *GetClassName();
+.END
+
+.SetupWindow
+void SetupWindow();
+.END
+
+
+

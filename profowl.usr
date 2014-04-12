@@ -1,0 +1,277 @@
+//
+// See Profowl.Inf Help file on how this file format is used.
+// Edit with care. This file must reside in the same HOME directory
+// as Profowl.Exe -- Also see File: PROFOWL.DAT
+// *** Do Not Edit PROFOWL.DAT ***
+//
+
+[Comments]
+.Dash-20
+//------------------
+.END
+
+.Dash-50
+//------------------------------------------------
+.END
+
+.Dash-70
+//--------------------------------------------------------------------
+.END
+
+.Dash-80
+//------------------------------------------------------------------------------
+.END
+
+
+
+.Function Block1
+//***************************************************
+// Function:
+//
+// Input:
+//
+// Returns:
+//
+//***************************************************
+.End
+
+
+.Function Block2
+//--------------------------------------------------------------------
+// Function:
+//
+// Example:
+//
+// Input:
+//
+// Returns:
+//
+// Notes:
+//--------------------------------------------------------------------
+.End
+
+.Function Block C Style
+/*--------------------------------------------------------------------
+* Function:
+*
+* Example:
+*
+* Input:
+*
+* Returns:
+*
+* Notes:
+--------------------------------------------------------------------*/
+.End
+
+.Function Block PC-8
+//ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฟ
+//ณ Function:                                                        ณ
+//ณ                                                                  ณ
+//ณ Example:                                                         ณ
+//ณ                                                                  ณ
+//ณ Input:                                                           ณ
+//ณ                                                                  ณ
+//ณ Returns:                                                         ณ
+//ณ                                                                  ณ
+//ณ Notes:                                                           ณ
+//ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤู
+.End
+
+.Function Block PC-8
+//ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+//บ Function:                                                        บ
+//บ                                                                  บ
+//บ Example:                                                         บ
+//บ                                                                  บ
+//บ Input:                                                           บ
+//บ                                                                  บ
+//บ Returns:                                                         บ
+//บ                                                                  บ
+//บ Notes:                                                           บ
+//ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+.End
+
+
+
+[File I/O]
+.Read File Loop
+    FILE *fp = fopen("FILE-NAME.EXT","rt");
+    while( !feof(fp) )
+    {
+        char str[MAX_BUFFER_SIZE];
+        fgets(str,sizeof(str),fp);
+        printf("String: %s",str);
+    }
+.END
+
+.Get File Size
+    // Get File Length
+    stat statbuf;
+    long fs = fstat(&statbuf);
+.END
+
+.DosFindFirst/Next Loop
+///
+#define INCL_DOSFILEMGR
+#include <os2.h>
+///
+    FILEFINDBUF3 FindBuf;
+    HDIR FindHandle = -1;
+    ULONG FindCount = 1;
+    int done = DosFindFirst("*",&FindHandle,
+        FILE_DIRECTORY,                     // Find Each Directory...
+        (PVOID)&FindBuf, sizeof(FindBuf),
+        &FindCount,
+        FIL_STANDARD);
+
+    while(!done)
+    {
+        printf("Directory: %s\n",FindBuf.achName);  // Show Each Directory Found
+    }
+    done = DosFindNext(FindHandle,&FindBuf,sizeof(FindBuf),&FindCount);
+    }
+    DosFindClose(FindHandle);
+.END
+
+
+.Structure FILEFINDBUF3 members used in Find First/Next
+// 32-bit level 1 information (without EAs)
+struct _FILEFINDBUF3
+{
+ ULONG    uloNextEntryOffset;
+ FDATE    fdateCreation;
+ FTIME    ftimeCreation;
+ FDATE    fdateLastAccess;
+ FTIME    ftimeLastAccess;
+ FDATE    fdateLastWrite;
+ FTIME    ftimeLastWrite;
+ ULONG    ulcbFile;
+ ULONG    ulcbFileAlloc;
+ ULONG    ulattrFile;
+ UCHAR    uccchName;
+ CHAR     chachName[CCHMAXPATHCOMP];
+}
+.END
+
+
+
+
+.DosQueryCurrentDir
+// Return the full path name of the current directory
+ #define INCL_DOSFILEMGR
+ #include <os2.h>
+//
+ ULONG   ulDriveNumber;     // 0=A,1=B,2=C
+ BYTE    CurDir[256+1];  // Buffer
+ CurDie[0] = '\0';
+ APIRET  rc = DosQueryCurrentDir(ulDriveNumber,CurDir, sizoeof(CurDir) );
+//
+.END
+
+
+
+[DosStartSession]
+.DosStartSession
+
+////////////////////////////////
+#define INCL_DOSSESMGR
+#define INCL_DOSPROCESS
+#define INCL_DOSQUEUES
+#include    <os2.h>
+////////////////////////////////
+
+ULONG DOS_START_SESSION(char *exe, char *parm)
+{
+    STARTDATA   StartData;
+    ULONG       SessID;
+    PID         pid,pid2;
+    APIRET      rc,rc2;
+    RESULTCODES ReturnCodes;
+    #define     QUE_NAME    "\\queues\\THE_NAME.que" // MUST BE UNQIUE NAME
+
+    HQUEUE QueueHandle;
+
+    StartData.Length = sizeof(STARTDATA);
+    StartData.Related = SSF_RELATED_CHILD;
+    StartData.FgBg = SSF_FGBG_BACK;
+    StartData.TraceOpt = SSF_TRACEOPT_NONE;
+    StartData.PgmTitle = "DosStartSession()";
+    StartData.PgmName = exe;
+    StartData.PgmInputs = parm;
+    StartData.Environment = 0;
+    StartData.TermQ = QUE_NAME;
+
+    StartData.InheritOpt = SSF_INHERTOPT_PARENT;
+    StartData.SessionType = SSF_TYPE_DEFAULT;
+    //
+    StartData.IconFile = 0;
+    StartData.PgmHandle = 0;
+    StartData.Reserved = 0;
+    //
+    StartData.PgmControl = SSF_CONTROL_VISIBLE | SSF_CONTROL_SETPOS;
+    StartData.InitXPos = 30;
+    StartData.InitYPos = 40;
+    StartData.InitXSize = 200;
+    StartData.InitYSize = 140;
+    //
+    char s[128];
+    StartData.ObjectBuffer = s;
+    StartData.ObjectBuffLen = sizeof(s);
+
+    rc = DosCreateQueue(&QueueHandle, QUE_FIFO, QUE_NAME);
+
+    if(rc)
+    {
+        //# printf("Create Queue Failed - Error rc = %ld\n",rc);
+        return(0);
+    }
+
+    rc = DosStartSession(&StartData, &SessID, &pid);
+    //# printf("Session Started!\n\a");
+
+    if(rc)
+    {
+        //# printf("Start Session Failed %ld\n%s\n\n",rc,s);
+    }
+    else
+    {
+        rc2 = DosWaitChild(DCWA_PROCESS, DCWW_WAIT, &ReturnCodes, &pid2, pid);
+
+        REQUESTDATA Request;
+        Request.pid = pid;
+        Request.ulData = 777;
+        //
+        ULONG ulDataLength = 0;
+        PVOID DataAddress = NULL;
+        BYTE ElemPriority = 0;
+        USHORT usElementCode = 0;
+        UCHAR ucNoWait = 0;
+        HEV   SemHandle = 0;
+
+        rc = DosReadQueue(QueueHandle, &Request, &ulDataLength,
+                            &DataAddress, usElementCode, ucNoWait,
+                            &ElemPriority, SemHandle);
+
+        //# printf("Read Queue Done\n\a");
+
+        if(rc)
+        {
+            //# printf("dos read queue failed %ld\n",rc);
+        }
+
+        rc = DosCloseQueue(QueueHandle);
+        if(rc)
+        {
+            //# printf("close queue failed %ld\n",rc);
+        }
+        //# printf("value of RequestData = %ld\n",Request.ulData);
+        return(Request.ulData);
+    }
+    return(0);
+}
+.END
+
+
+
+
